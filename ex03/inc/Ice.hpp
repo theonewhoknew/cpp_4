@@ -3,6 +3,7 @@
 
 # include <iostream>
 # include "AMateria.hpp"
+# include "ICharacter.hpp"
 
 class Ice : public AMateria
 {
@@ -13,7 +14,7 @@ public:
 	Ice& operator=(const Ice &copy);
 	virtual ~Ice();
 
-	virtual AMateria* clone() const;
+	AMateria* clone() const;
 };
 
 #endif

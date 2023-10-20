@@ -29,4 +29,3 @@ AMateria* Cure::clone() const
 {
 	return (new Cure);
 }
-

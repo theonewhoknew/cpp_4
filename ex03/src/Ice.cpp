@@ -2,13 +2,12 @@
 #include "../inc/AMateria.hpp"
 #include <iostream>
 
-Ice::Ice()
+Ice::Ice() : AMateria("ice")
 {
 	std::cout << "Ice created!" << std::endl;
-	_type = "ice";
 }
 
-Ice::Ice(Ice &copy)
+Ice::Ice(Ice &copy) : AMateria("ice")
 {	
 	std::cout << "Ice copy constructor called" << std::endl;
 	_type = copy._type;
@@ -26,13 +25,7 @@ Ice::~Ice()
 	std::cout << "Ice destroyed!" << std::endl;
 }
 
-AMateria* Ice::clone()
+AMateria* Ice::clone() const
 {
 	return (new Ice);
 }
-
-std::string Ice::getType() const
-{
-	return (_type);
-}
-
