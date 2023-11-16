@@ -5,7 +5,7 @@
 
 Character::Character(std::string name)
 {	
-	std::cout << "Character created!" << std::endl;
+	//std::cout << "Character created!" << std::endl;
 	_name = name;
 	for (int i = 0; i < 4; i++)
 	{
@@ -19,7 +19,7 @@ Character::Character(std::string name)
 
 Character::Character(Character &copy)
 {	
-	std::cout << "Character copy constructor called" << std::endl;
+	//std::cout << "Character copy constructor called" << std::endl;
 	_name = copy._name;
 	for (int i = 0; i < 4; i++)
 	{	
@@ -33,7 +33,7 @@ Character::Character(Character &copy)
 
 Character& Character::operator=(const Character &copy)
 {	
-	std::cout << "Character copy assignment operator called" << std::endl;
+	//std::cout << "Character copy assignment operator called" << std::endl;
 	_name = copy._name;
 	for (int i = 0; i < 4; i++)
 	{	
@@ -45,7 +45,7 @@ Character& Character::operator=(const Character &copy)
 
 Character::~Character()
 {
-	std::cout << "Character destroyed!" << std::endl;
+	//std::cout << "Character destroyed!" << std::endl;
 	for (int i = 0; i < 4; i++)
 	{
 		delete _inventory[i];
