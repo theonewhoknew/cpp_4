@@ -1,5 +1,5 @@
-NAME = abstract
-SRC = $(addprefix $(DIR_SRC), main.cpp AMateria.cpp Cure.cpp Ice.cpp)
+NAME = materia
+SRC = $(addprefix $(DIR_SRC), main.cpp AMateria.cpp Cure.cpp Ice.cpp Character.cpp MateriaSource.cpp)
 FLAGS = -std=c++98 -Wall -Wextra -Werror
 DEPFLAGS = -MMD -MP
 DIR_OBJ = tmp/
