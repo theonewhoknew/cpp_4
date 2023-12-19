@@ -8,13 +8,13 @@ Animal::Animal()
 
 Animal::Animal(Animal &copy)
 {	
-	std::cout << "Base class copy constructor called" << std::endl;
+	std::cout << "Animal copy constructor called" << std::endl;
 	_type = copy._type;
 }
 
 Animal& Animal::operator=(const Animal &copy)
 {	
-	std::cout << "Base class copy assignment operator called" << std::endl;
+	std::cout << "Animal copy assignment operator called" << std::endl;
 	_type = copy._type;
 	return (*this);
 }

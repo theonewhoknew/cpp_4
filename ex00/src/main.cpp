@@ -16,16 +16,26 @@ int main()
 	j->makeSound();
 	meta->makeSound();
 
+/* 	Cat* z;
+	const Dog* y = new Dog();
+	z = y; */
+	std::cout << std::endl;
+	Dog *z = new Dog();
+	const Animal *y = z;
+	y->makeSound();
+	delete y;
+	std::cout << std::endl;
+
+	
 	const WrongAnimal* wanimal = new WrongAnimal();
 	wanimal->makeSound();
-
-	const WrongCat* wcat = new WrongCat();
+	const WrongAnimal* wcat = new WrongCat();
 	wcat->makeSound();
+	
 	
 	delete meta;
 	delete j;
 	delete i;
-
 	delete wanimal;
 	delete wcat;
 
