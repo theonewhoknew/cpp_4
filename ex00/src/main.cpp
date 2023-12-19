@@ -26,6 +26,18 @@ int main()
 	delete y;
 	std::cout << std::endl;
 
+
+
+	std::cout << std::endl;
+	Animal f;
+	//Dog e(f);  no se puede generar un copy constructor Dog a partir de Animal, es decir, de clase derivada a partir de la clase base
+	Dog g;
+	Dog e(g);
+	std::cout << e.getType() << " " << std::endl;
+	std::cout << f.getType() << " " << std::endl;
+	f = e;   // posible asignar de clase derivada a clase base, pero ocurre slicing, solo se copia informacion presente en base class
+	std::cout << f.getType() << " " << std::endl;
+	std::cout << std::endl;
 	
 	const WrongAnimal* wanimal = new WrongAnimal();
 	wanimal->makeSound();

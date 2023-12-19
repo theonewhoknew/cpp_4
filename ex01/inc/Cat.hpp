@@ -12,7 +12,9 @@ private:
 
 public:
 	Cat();
-	virtual ~Cat();
+	Cat(Cat &copy);
+	Cat& operator=(const Cat &instance);
+	~Cat();
 
 	void makeSound() const;
 };

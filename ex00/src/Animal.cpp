@@ -4,6 +4,7 @@
 Animal::Animal()
 {
 	std::cout << "Random animal appeared!" << std::endl;
+	setType("Animal");
 }
 
 Animal::Animal(Animal &copy)
