@@ -12,11 +12,15 @@ private:
 
 public:
 	Dog();
-	virtual ~Dog();
+	Dog(Dog &copy);
+	Dog& operator=(const Dog &instance);
+	~Dog();
 
-	void makeSound() const;
+	void 	makeSound() const;
+	void	writeIdea(int n, std::string idea) const;
+	void	printIdeas(int n) const;
 
-	virtual void f();
+	void f();
 };
 
 #endif

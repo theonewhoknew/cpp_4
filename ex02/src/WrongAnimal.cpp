@@ -8,13 +8,13 @@ WrongAnimal::WrongAnimal()
 
 WrongAnimal::WrongAnimal(WrongAnimal &copy)
 {	
-	std::cout << "Base class copy constructor called" << std::endl;
+	std::cout << "WrongAnimal copy constructor called" << std::endl;
 	_type = copy._type;
 }
 
 WrongAnimal& WrongAnimal::operator=(const WrongAnimal &copy)
 {	
-	std::cout << "Base class copy assignment operator called" << std::endl;
+	std::cout << "WrongAnimal copy assignment operator called" << std::endl;
 	_type = copy._type;
 	return (*this);
 }

@@ -9,9 +9,14 @@ int main()
 {	
 	Cat a;
 
-	Dog b;
+	Dog *b = new Dog;
 
-	Animal *c = &b;
+	Animal *c = b;
+
+	c->makeSound();
+
+	//Animal a;
+	//Animal *z = new Animal;
 
 	return (0);
 }

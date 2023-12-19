@@ -12,7 +12,10 @@ public:
 	Brain();
 	Brain(Brain &copy);
 	Brain& operator=(const Brain &instance);
-	virtual ~Brain();
+	~Brain();
+
+	void writeIdea(int n, std::string idea);
+	void printIdeas(int n);
 };
 
 #endif
