@@ -5,6 +5,10 @@
 Brain::Brain()
 {
 	std::cout << "Brain was created!" << std::endl;
+	for ( int i = 0; i < 100; i++ ) 
+	{
+        this->_ideas[i] = "blank";
+    }
 }
 
 Brain::Brain(Brain &copy)
@@ -29,4 +33,19 @@ Brain& Brain::operator=(const Brain &copy)
 Brain::~Brain()
 {
 	std::cout << "Brain was destroyed!" << std::endl;
+}
+
+void Brain::writeIdea(int n, std::string idea)
+{
+	_ideas[n] = idea;
+}
+
+void Brain::printIdeas(int n)
+{	
+	if (n > 100)
+		n = 100;
+	for ( int i = 0; i < n; i++ ) 
+	{
+        std::cout << this->_ideas[i] << " " << i + 1 << std::endl;
+    }
 }
