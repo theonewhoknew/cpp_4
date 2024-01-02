@@ -7,11 +7,11 @@
 class AMateria
 {
 	protected:
-		std::string _type;
+		std::string _type;	
 	public:
 		AMateria(std::string const & type);
 		AMateria(AMateria &copy);
-		AMateria& operator=(const AMateria &copy);
+		AMateria& operator=(const AMateria &instance);
 		virtual ~AMateria();
 		
 		std::string const & getType() const;

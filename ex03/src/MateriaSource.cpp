@@ -32,7 +32,11 @@ MateriaSource& MateriaSource::operator=(const MateriaSource &copy)
 
 MateriaSource::~MateriaSource()
 {
-	//std::cout << "MateriaSource destroyed!" << std::endl;
+	std::cout << "Materia source destroyed." << std::endl;
+	for (int i = 0; i < 4; i++)
+	{
+		delete _materia[i];
+	}
 }
 
 void MateriaSource::learnMateria(AMateria *m)
@@ -41,7 +45,7 @@ void MateriaSource::learnMateria(AMateria *m)
 	{	
 		if (!_materia[i])
 		{
-			_materia[i] = m->clone();
+			_materia[i] = m;
 			break ;
 		}
 	}
