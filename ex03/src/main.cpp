@@ -9,6 +9,12 @@
 int main()
 {	
 	{
+	AMateria *a = new Ice();
+	std::cout << a->getType() << std::endl;
+	delete a;
+	}
+	
+	{
 	IMateriaSource* src = new MateriaSource();
 	src->learnMateria(new Ice());
 	src->learnMateria(new Cure());
@@ -27,11 +33,6 @@ int main()
 	delete bob;
 	delete me;
 	delete src;
-	}
-	{
-	AMateria *a = new Ice();
-	std::cout << a->getType() << std::endl;
-	delete a;
 	}
 
 	return 0;

@@ -12,7 +12,7 @@ public:
 	Ice();
 	Ice(Ice &copy);
 	Ice& operator=(const Ice &instance);
-	virtual ~Ice();
+	~Ice();
 
 	AMateria* clone() const;
 };
