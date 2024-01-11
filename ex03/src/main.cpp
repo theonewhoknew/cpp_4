@@ -23,7 +23,6 @@ int main()
 		IMateriaSource* src = new MateriaSource();
 		src->learnMateria(new Ice());
 		src->learnMateria(new Ice());
-		src->learnMateria(new Ice());
 		std::cout << "------print materias src----- " << std::endl;
 		src->printMaterias();
 
@@ -40,7 +39,6 @@ int main()
 		src_copy->printMaterias();
 
 		delete src;
-		delete src_copy;
 	}
 
 	{
