@@ -16,6 +16,10 @@ int main()
 	j->makeSound();
 	meta->makeSound();
 
+	delete meta;
+	delete j;
+	delete i;
+
 /* 	Cat* z;
 	const Dog* y = new Dog();
 	z = y; */
@@ -23,7 +27,7 @@ int main()
 	Dog *z = new Dog();
 	const Animal *y = z;
 	y->makeSound();
-	delete y;
+	delete z;
 	std::cout << std::endl;
 
 
@@ -44,10 +48,6 @@ int main()
 	const WrongAnimal* wcat = new WrongCat();
 	wcat->makeSound();
 	
-	
-	delete meta;
-	delete j;
-	delete i;
 	delete wanimal;
 	delete wcat;
 

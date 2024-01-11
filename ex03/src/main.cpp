@@ -8,6 +8,41 @@
 
 int main()
 {	
+
+	{
+	AMateria *a = new Ice();
+	std::cout << a->getType() << std::endl;
+	delete a;
+	a = new Cure();
+	std::cout << a->getType() << std::endl;
+	delete a;
+	std::cout << "--------------------------------" << std::endl;
+	}
+
+	{
+		IMateriaSource* src = new MateriaSource();
+		src->learnMateria(new Ice());
+		src->learnMateria(new Ice());
+		src->learnMateria(new Ice());
+		std::cout << "------print materias src----- " << std::endl;
+		src->printMaterias();
+
+		IMateriaSource *src_copy(src);
+		std::cout << "------print materias src copy----- " << std::endl;
+		src_copy->printMaterias();
+
+		src_copy->learnMateria(new Cure());
+
+		std::cout << "------print materias src - deep copy check----- " << std::endl;
+		src->printMaterias();
+
+		std::cout << "------print materias srccopy - deep copy check----- " << std::endl;
+		src_copy->printMaterias();
+
+		delete src;
+		delete src_copy;
+	}
+
 	{
 	IMateriaSource* src = new MateriaSource();
 	src->learnMateria(new Ice());
@@ -24,15 +59,21 @@ int main()
 	me->use(0, *bob);
 	me->use(1, *bob);
 
+	me->unequip(0);
+	me->unequip(1);
+	me->use(0, *bob);
+	me->unequip(0);
+
+	me->equip(tmp);
+	me->equip(tmp);
+	me->equip(tmp);
+	me->equip(tmp);
+
+	me->equip(tmp);
+
 	delete bob;
-	delete me;
+	delete me; 
 	delete src;
 	}
-	{
-	AMateria *a = new Ice();
-	std::cout << a->getType() << std::endl;
-	delete a;
-	}
-
 	return 0;
 }

@@ -12,9 +12,10 @@ public:
 	Cure();
 	Cure(Cure &copy);
 	Cure& operator=(const Cure &instance);
-	virtual ~Cure();
+	~Cure();
 
 	AMateria* clone() const;
+	void use(ICharacter& target);
 };
 
 #endif

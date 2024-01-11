@@ -3,6 +3,20 @@
 #include "../inc/AMateria.hpp"
 #include <iostream>
 
+Character::Character()
+{	
+	//std::cout << "Character created!" << std::endl;
+	_name = "anonymous";
+	for (int i = 0; i < 4; i++)
+	{
+		_inventory[i] = NULL;
+	}
+	for (int i = 0; i < 100; i++)
+	{
+		_floor[i] = NULL;
+	}
+}
+
 Character::Character(std::string name)
 {	
 	//std::cout << "Character created!" << std::endl;
@@ -31,24 +45,25 @@ Character::Character(Character &copy)
 	}
 }
 
-Character& Character::operator=(const Character &copy)
+Character& Character::operator=(const Character &instance)
 {	
 	//std::cout << "Character copy assignment operator called" << std::endl;
-	_name = copy._name;
+	_name = instance._name;
 	for (int i = 0; i < 4; i++)
 	{	
 		delete _inventory[i];
-		_inventory[i] = copy._inventory[i]->clone();
+		_inventory[i] = instance._inventory[i]->clone();
 	}
 	return (*this);
 }
 
 Character::~Character()
 {
-	//std::cout << "Character destroyed!" << std::endl;
+	std::cout << "Character " << _name << " went home!" << std::endl;
 	for (int i = 0; i < 4; i++)
 	{
 		delete _inventory[i];
+		_inventory[i] = NULL;
 	}
 	clean_floor();
 }
@@ -59,34 +74,61 @@ std::string const & Character::getName() const
 }
 
 void Character::equip(AMateria* m)
-{
+{	
+	int	flag = 0;
+	int slot = 0;
+
 	for (int i = 0; i < 4; i++)
 	{
 		if (!_inventory[i])
 		{
-			_inventory[i] = m;
+			_inventory[i] = m->clone();
+			flag = 1;
+			slot = i;
 			break;
 		}
 	}
+	if (!flag)
+		std::cout << "There are no empty slots to equip new materia!" << std::endl;
+	else
+		std::cout << m->getType() << " was equipped in slot " << slot << " ." << std::endl;
 }
 
 void Character::unequip(int idx)
 {
 	if (idx >= 0 && idx < 4)
 	{	
-		for (int i = 0; i < 100; i++)
+		if (_inventory[idx])
 		{
-			if (!_floor[i])
-				_floor[i] = _inventory[idx];
+			for (int i = 0; i < 100; i++)
+			{
+				if (!_floor[i])
+					_floor[i] = _inventory[idx]->clone();
+			}
+			delete _inventory[idx];
+			_inventory[idx] = NULL;
+			std::cout << "materia in slot " << idx << " was unequipped." << std::endl;
 		}
-		_inventory[idx] = NULL;
+		else
+		{
+			std::cout << "slot " << idx << " is already empty!" << std::endl;
+		}
+	}
+	else
+	{
+		std::cout << "unequip was not possible. wrong inventory slot provided." << std::endl;
 	}
 }
 
 void Character::use(int idx, ICharacter& target)
-{
-	if (idx >= 0 && idx < 4 && _inventory[idx])
+{	
+	if (_inventory[idx])
+	{
+		if (idx >= 0 && idx < 4 && _inventory[idx])
 		_inventory[idx]->use(target);
+	}
+	else
+		std::cout << "there's no materia in slot " << idx << " to target " << target.getName() << " with!" << std::endl;
 }
 
 void Character::clean_floor(void)
@@ -94,5 +136,6 @@ void Character::clean_floor(void)
 	for (int i = 0; i < 100; i++)
 	{
 		delete _floor[i];
+		_floor[i] = NULL;
 	}
 }

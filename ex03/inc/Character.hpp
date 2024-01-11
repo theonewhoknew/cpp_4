@@ -13,10 +13,11 @@ class Character : public ICharacter
 		AMateria *_floor[100];
 
 	public:
+		Character();
 		Character(std::string name);
 		Character(Character &copy);
 		Character& operator=(const Character &instance);
-		virtual ~Character();
+		~Character();
 
 		std::string const & getName() const;
 		void equip(AMateria* m);

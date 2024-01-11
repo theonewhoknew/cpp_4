@@ -1,6 +1,12 @@
 #include "../inc/AMateria.hpp"
 #include <iostream>
 
+AMateria::AMateria()
+{
+	//std::cout << "AMateria created!" << std::endl;
+	_type = "default";
+}
+
 AMateria::AMateria(std::string const & type)
 {
 	//std::cout << "AMateria created!" << std::endl;
@@ -32,8 +38,5 @@ std::string const & AMateria::getType() const
 
 void AMateria::use(ICharacter& target)
 {	
-	if (_type == "ice")
-		std::cout << "* shoots an ice bot at " << target.getName() << " *" << std::endl;
-	else if(_type == "cure")
-		std::cout << "* heals " << target.getName() << "'s wounds *" << std::endl;
+	(void)	target;
 }
