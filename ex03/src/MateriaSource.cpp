@@ -14,11 +14,10 @@ MateriaSource::MateriaSource(MateriaSource &copy)
 	//std::cout << "MateriaSource copy constructor called" << std::endl;
 	for (int i = 0; i < 4; i++)
 	{	
-		_materia[i] = NULL;
-	}
-	for (int i = 0; i < 4; i++)
-	{	
-		_materia[i] = copy._materia[i]->clone();
+		if (copy._materia[i])
+			_materia[i] = copy._materia[i]->clone();
+		else
+			_materia[i] = NULL;
 	}
 }
 
@@ -26,12 +25,11 @@ MateriaSource& MateriaSource::operator=(const MateriaSource &instance)
 {	
 	//std::cout << "MateriaSource assignment operator called" << std::endl;
 	for (int i = 0; i < 4; i++)
-	{	
-		_materia[i] = NULL;
-	}
-	for (int i = 0; i < 4; i++)
 	{
-		_materia[i] = instance._materia[i]->clone();
+		if (instance._materia[i])
+			_materia[i] = instance._materia[i]->clone();
+		else
+			_materia[i] = NULL;
 	}
 	return (*this);
 }

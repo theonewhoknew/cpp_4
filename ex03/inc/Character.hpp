@@ -24,6 +24,8 @@ class Character : public ICharacter
 		void unequip(int idx);
 		void use(int idx, ICharacter& target);
 		void clean_floor(void);
+
+		void print_inventory(void);
 };
 
 #endif

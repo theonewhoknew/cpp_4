@@ -37,11 +37,21 @@ Character::Character(Character &copy)
 	_name = copy._name;
 	for (int i = 0; i < 4; i++)
 	{	
-		if (_inventory[i])
+		if (copy._inventory[i])
 		{	
-			delete _inventory[i];
 			_inventory[i] = copy._inventory[i]->clone();
 		}
+		else
+			_inventory[i] = NULL;
+	}
+	for (int i = 0; i < 100; i++)
+	{
+		if (copy._floor[i])
+		{	
+			_floor[i] = copy._floor[i]->clone();
+		}
+		else
+			_floor[i] = NULL;
 	}
 }
 
@@ -51,8 +61,21 @@ Character& Character::operator=(const Character &instance)
 	_name = instance._name;
 	for (int i = 0; i < 4; i++)
 	{	
-		delete _inventory[i];
-		_inventory[i] = instance._inventory[i]->clone();
+		if (instance._inventory[i])
+		{	
+			_inventory[i] = instance._inventory[i]->clone();
+		}
+		else
+			_inventory[i] = NULL;
+	}
+	for (int i = 0; i < 100; i++)
+	{
+		if (instance._floor[i])
+		{	
+			_floor[i] = instance._floor[i]->clone();
+		}
+		else
+			_floor[i] = NULL;
 	}
 	return (*this);
 }
@@ -137,5 +160,16 @@ void Character::clean_floor(void)
 	{
 		delete _floor[i];
 		_floor[i] = NULL;
+	}
+}
+
+void Character::print_inventory(void)
+{
+	for (int i = 0; i < 4; i++)
+	{
+		if (_inventory[i])
+			std::cout << "Inventory slot " << i << " is " << _inventory[i]->getType() << " ." << std::endl;
+		else
+			std::cout << "Inventory slot " << i <<  " is empty." << std::endl;
 	}
 }

@@ -26,10 +26,11 @@ int main()
 		std::cout << "------print materias src----- " << std::endl;
 		src->printMaterias();
 
-		IMateriaSource *src_copy(src);
+		IMateriaSource *src_copy = new MateriaSource(*dynamic_cast<MateriaSource*>(src));;
 		std::cout << "------print materias src copy----- " << std::endl;
 		src_copy->printMaterias();
 
+		src->learnMateria(new Ice());
 		src_copy->learnMateria(new Cure());
 
 		std::cout << "------print materias src - deep copy check----- " << std::endl;
@@ -39,12 +40,33 @@ int main()
 		src_copy->printMaterias();
 
 		delete src;
+		delete src_copy;
 	}
 
 	{
-	AMateria *a = new Ice();
-	std::cout << a->getType() << std::endl;
-	delete a;
+		std::cout << "--------------------------------" << std::endl;
+		ICharacter *me = new Character("me");
+		AMateria *ice = new Ice();
+		AMateria *cure = new Cure();
+		me->equip(ice);
+		me->equip(cure);
+		std::cout << "------------original inventory--------------------" << std::endl;
+		me->print_inventory();
+
+		ICharacter *me_copy = new Character(*dynamic_cast<Character*>(me));
+		me->unequip(0);
+
+		std::cout << "------------original inventory--------------------" << std::endl;
+		me->print_inventory();
+
+		std::cout << "------------copy inventory--------------------" << std::endl;
+		me_copy->print_inventory();
+
+		delete me;
+		delete me_copy;
+		delete ice;
+		delete cure;
+		
 	}
 	
 	{
